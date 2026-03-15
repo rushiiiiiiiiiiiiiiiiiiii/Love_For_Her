@@ -2,7 +2,7 @@
   {
     "id": "event1",
     "title": "Our Anniversary",
-    "date": "2026-01-16",
+    "date": "2026-02-26",
     "type": "anniversary",
     "description": "The day that started everything between us ❤️",
     "reminder": true,
@@ -10,8 +10,8 @@
   },
   {
     "id": "event2",
-    "title": "Your Birthday Shrutii",
-    "date": "2026-08-08",
+    "title": "Your Birthday Rashmika",
+    "date": "2026-04-05",
     "type": "birthday",
     "description": "The most special day because YOU were born 🥹💕",
     "reminder": true,
@@ -21,16 +21,16 @@
   {
     "id": "event-my-birthday",
     "title": "My Birthday 🎉❤️",
-    "date": "2026-05-20",
+    "date": "2026-05-09",
     "type": "birthday",
     "sortOrder": 3,
     "image": "https://images.stockcake.com/public/c/8/1/c81f7134-8fd5-4e26-896f-5a0cd18eff8e_large/joyful-birthday-celebration-stockcake.jpg",
-    "description": "It's my birthday… and I feel lucky I was born just to love you, Shrutii ❤️"
+    "description": "It's my birthday… and I feel lucky I was born just to love you, Rashmikaa ❤️"
   },
   {
     "id": "event3",
     "title": "Our Trip Together",
-    "date": "2029-04-20",
+    "date": "2026-04-20",
     "type": "trip",
     "description": "Our little adventure, our little escape 🌴✨",
     "reminder": true,
@@ -39,7 +39,7 @@
   {
     "id": "event4",
     "title": "Movie Date",
-    "date": "2029-01-15",
+    "date": "2026-08-15",
     "type": "date",
     "description": "A fantastic movie session togther, pocorn, me and you 🌙💕",
     "recurring": "monthly",
@@ -49,7 +49,7 @@
   {
     "id": "event5",
     "title": "Temple Darshan",
-    "date": "2027-01-15",
+    "date": "2026-06-15",
     "type": "temple",
     "description": "Our peaceful tradition… just you and me, together in blessings 🕊️✨",
     "recurring": "monthly",

@@ -5,6 +5,7 @@ A beautiful, romantic, frontend-only website created with love.
 ## 🎨 What's Included
 
 ### ✅ Fully Working Features:
+
 1. **Onboarding** - Name input, PIN lock, theme selection
 2. **Lock Screen** - Secure PIN protection
 3. **Home Dashboard** - 14 beautiful feature cards
@@ -14,6 +15,7 @@ A beautiful, romantic, frontend-only website created with love.
 7. **Settings** - Customize name, theme, and PIN
 
 ### 🎯 Features Ready for Content (Placeholder Pages):
+
 8. Voice Notes
 9. Mood Buttons
 10. Daily Affirmations
@@ -58,6 +60,7 @@ A beautiful, romantic, frontend-only website created with love.
 ## 🚀 How to Set Up & Customize
 
 ### Step 1: Clone to Your Computer
+
 ```bash
 git clone <your-repo-url>
 cd <your-project-folder>
@@ -66,6 +69,7 @@ npm run dev
 ```
 
 ### Step 2: Add Your Media Files
+
 1. Create folders in `/assets/` (see structure above)
 2. Add your files:
    - **Songs**: `.mp3` files in `/assets/songs/`
@@ -74,9 +78,11 @@ npm run dev
    - **Other Images**: In appropriate folders
 
 ### Step 3: Customize Content
+
 Edit the JSON files in `/src/data/` to match your story:
 
 #### Example: messages.json
+
 ```json
 {
   "id": "msg1",
@@ -89,6 +95,7 @@ Edit the JSON files in `/src/data/` to match your story:
 ```
 
 ### Step 4: Update File Paths
+
 Make sure file paths in JSON match your actual file names in `/assets/`
 
 ## 🎨 Design Features
@@ -110,7 +117,9 @@ Make sure file paths in JSON match your actual file names in `/assets/`
 ## 📝 Customization Tips
 
 ### Colors
+
 Edit `/src/index.css` to change colors:
+
 ```css
 --rose: 340 82% 67%;
 --lavender: 280 60% 85%;
@@ -118,9 +127,11 @@ Edit `/src/index.css` to change colors:
 ```
 
 ### Fonts
+
 Change fonts in `/index.html` and `/tailwind.config.ts`
 
 ### Add More Messages
+
 Just add more entries to any JSON file following the existing format
 
 ## 🎯 Completing the Features
@@ -133,6 +144,7 @@ The following pages have placeholder content. To make them fully functional:
 4. **Use the data** from corresponding JSON files
 
 Example structure:
+
 ```tsx
 import data from "@/data/yourdata.json";
 // Build your page component
@@ -141,6 +153,7 @@ import data from "@/data/yourdata.json";
 ## 💝 First-Person Voice
 
 All content is written in first-person as Rushi:
+
 - "I made this for you"
 - "I love you"
 - "I wrote this message"
@@ -150,21 +163,25 @@ Keep this voice consistent when adding content!
 ## 🌟 Special Features
 
 ### Daily Messages
+
 - Rotates based on day of year
 - Unlock and favorite system
 - Optional voice notes
 
 ### Timeline
+
 - Slideshow mode
 - Polaroid-style presentation
 - Navigation between moments
 
 ### Jar of Hearts
+
 - Random note picker
 - Tracks used notes
 - 40+ pre-written love notes
 
 ### Settings
+
 - Change name
 - Update PIN
 - Switch themes
@@ -181,6 +198,7 @@ Keep this voice consistent when adding content!
 ## 🎁 Made with Love
 
 This website is:
+
 - ✅ 100% frontend (no server needed)
 - ✅ Works offline
 - ✅ Completely private
@@ -191,16 +209,20 @@ This website is:
 ## 🚀 Deployment
 
 ### Option 1: GitHub Pages
+
 ```bash
 npm run build
 # Upload 'dist' folder to GitHub Pages
 ```
 
 ### Option 2: Lovable
+
 Click "Publish" button in Lovable interface
 
 ### Option 3: Any Static Host
+
 Deploy the `dist` folder to:
+
 - Netlify
 - Vercel
 - Firebase Hosting

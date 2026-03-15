@@ -1,0 +1,43 @@
+
+[
+  {
+    "id": "moment1",
+    "date": "Our First Hello",
+    "title": "The Day We Met",
+    "description": "I still remember that moment like it just happened. The first time we confessed our feelings, the first time our hearts chose each other. From that day till today, we’ve walked this journey together. Your smile caught me off guard, and in that single second, I knew you were someone truly special — someone my heart would never forget.",
+    "image": "/assets/first.jpeg",
+    "emoji": "👋"
+  },
+  {
+    "id": "moment2",
+    "date": "First Date",
+    "title": "When We Had Our First Date",
+    "description": "We Spent Quality time talked for hours, yet it felt like only minutes. Your voice, your thoughts, your presence — everything made the world fade away. That day I realized something important: I wanted you in my life, not just for a moment, but for every moment that would follow.",
+    "image": "/assets/second.jpeg",
+    "emoji": "💬"
+  },
+  {
+    "id": "moment3",
+    "date": "Special Days",
+    "title": "Our Everyday Meetings",
+    "description": "Those days with you felt magical. Your laugh, your stories, the way your eyes sparkled when you spoke — every little thing made me fall deeper. I didn’t even realize when my heart started choosing you, effortlessly, naturally, beautifully.",
+    "image": "/assets/11th.jpeg",
+    "emoji": "🌹"
+  },
+  {
+    "id": "moment4",
+    "date": "Growing Closer",
+    "title": "Getting to Know You to You Becoming Mine",
+    "description": "Day by day, I discovered new parts of you — the soft ones, the strong ones, the funny ones, the real ones. And every discovery made me love you a little more. You became my favorite person to talk to, my comfort, my happiness, my safe place… and eventually, the one my heart proudly calls mine.",
+    "image": "/assets/thirtythree.jpeg",
+    "emoji": "💕"
+  },
+  {
+    "id": "moment5",
+    "date": "Today & Forever",
+    "title": "Here and Now",
+    "description": "And here we are — you and me, in this moment that feels like home. Every laugh, every message, every silly fight, every soft conversation… all of it brought us closer, shaping a story I wouldn’t trade for anything. If I could relive every second that led me to you, I would choose it again and again. Because with you, everything feels right. I love you with every sunrise, every night, every breath, every heartbeat. And I can’t wait to build a lifetime of memories with you — today, tomorrow, forever.",
+    "image": "/assets/fifty.jpeg",
+    "emoji": "❤️"
+  }
+]

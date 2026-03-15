@@ -11,9 +11,9 @@ export const BackgroundText = () => {
     `love you ${name}`,
     `${name} forever`,
     "My sunshine",
-    "My soulmate",
+    "My soulmate ❤️",
     "My princess",
-    "Pikesh ❤️",
+    "My World ❤️",
     `${name} ❤️`,
     "Always yours",
   ];

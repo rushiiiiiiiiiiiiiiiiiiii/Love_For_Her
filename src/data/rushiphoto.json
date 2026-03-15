@@ -1,9 +1,13 @@
+
+
+
+
 [
   {
     "id": "photo1",
     "title": "Our First Photo Together",
     "date": "2023-06-15",
-    "file": "/RashVijay/download (10).jpg",
+    "file": "/assets/first.jpegzz",
     "caption": "The beginning of something beautiful",
     "favorite": true
   },
@@ -11,7 +15,7 @@
     "id": "photo2",
     "title": "That Ranibaug Trip",
     "date": "2023-07-20",
-    "file": "/RashVijay/download (8).jpg",
+    "file": "/assets/WhatsApp Image 2025-11-17 at 8.57.34 PM.jpeg",
     "caption": "The day we laughed, wandered and forgot the world",
     "favorite": true
   },
@@ -19,7 +23,7 @@
     "id": "photo3",
     "title": "Our First Lunch Together",
     "date": "2023-08-10",
-    "file": "/RashVijay/download (15) vid.mp4",
+    "file": "/assets/lunch.jpeg",
     "caption": "My favorite sight in the world",
     "favorite": true
   },
@@ -27,7 +31,7 @@
     "id": "photo4",
     "title": "Daily Meetings & Fun",
     "date": "2023-09-05",
-    "file": "/RashVijay/download (4).jpg",
+    "file": "/assets/fourth.jpeg",
     "caption": "The fun we had together still makes me smile",
     "favorite": false
   },
@@ -35,7 +39,7 @@
     "id": "photo5",
     "title": "That Flower Plug Day",
     "date": "2023-10-12",
-    "file": "/RashVijay/download (5).jpg",
+    "file": "/assets/thirtythree.jpeg",
     "caption": "A quiet, warm, beautiful afternoon",
     "favorite": false
   },
@@ -43,7 +47,7 @@
     "id": "photo6",
     "title": "Your Birthday",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (6).jpg",
+    "file": "/assets/third.jpeg",
     "caption": "Celebrating you felt like celebrating happiness itself",
     "favorite": true
   },
@@ -51,7 +55,7 @@
     "id": "photo7",
     "title": "Fallen Moment",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (12).jpg",
+    "file": "/assets/best.jpeg",
     "caption": "That eye contact… I still feel it",
     "favorite": true
   },
@@ -59,7 +63,7 @@
     "id": "photo8",
     "title": "Loved Together",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (14) vid.mp4",
+    "file": "/videos/fav.mp4",
     "caption": "A moment I keep replaying in my heart",
     "favorite": true
   },
@@ -67,7 +71,7 @@
     "id": "photo9",
     "title": "Temple Meet",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (9).jpg",
+    "file": "/assets/other.jpeg",
     "caption": "You looked so pure in the dress my mom gifted you",
     "favorite": true
   },
@@ -75,7 +79,7 @@
     "id": "photo10",
     "title": "Lovely Moment",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (7).jpg",
+    "file": "/assets/get.jpeg",
     "caption": "These little moments stay with me forever",
     "favorite": true
   },
@@ -83,7 +87,7 @@
     "id": "photo11",
     "title": "Sweet Time Together",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (11).jpg",
+    "file": "/assets/fifty.jpeg",
     "caption": "Everything felt perfect with you",
     "favorite": true
   },
@@ -91,7 +95,7 @@
     "id": "photo12",
     "title": "Our First Dance",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (3).jpg",
+    "file": "/assets/v1.mp4",
     "caption": "Our first dance… still my favorite memory",
     "favorite": true
   },
@@ -99,7 +103,7 @@
     "id": "photo13",
     "title": "Laughing Together",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (2).jpg",
+    "file": "/assets/v2.mp4",
     "caption": "Your laugh makes every day feel lighter",
     "favorite": true
   },
@@ -107,7 +111,7 @@
     "id": "photo14",
     "title": "Smiling Together",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (16) vid.mp4",
+    "file": "/assets/s1.jpeg",
     "caption": "Your smile here still melts me",
     "favorite": true
   },
@@ -115,7 +119,7 @@
     "id": "photo15",
     "title": "Temple Blessings",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (1).jpg",
+    "file": "/videos/temple.mp4",
     "caption": "A moment full of blessings, faith and and our purity on god",
     "favorite": true
   },
@@ -123,7 +127,7 @@
     "id": "photo16",
     "title": "Pani Puri Fun",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (17).jpg",
+    "file": "/videos/panipuri1.mp4",
     "caption": "The way we enjoy even simple things together",
     "favorite": true
   },
@@ -131,7 +135,7 @@
     "id": "photo17",
     "title": "Sweet Moments",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (18).jpg",
+    "file": "/assets/s2.jpeg",
     "caption": "A soft, sweet memory with you",
     "favorite": true
   },
@@ -139,7 +143,7 @@
     "id": "photo18",
     "title": "Laughing Again",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (19).jpg",
+    "file": "/videos/pikesh.mp4",
     "caption": "This laughter still echoes in my heart",
     "favorite": true
   },
@@ -147,7 +151,7 @@
     "id": "photo19",
     "title": "Ice Cream Joy",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (20).jpg",
+    "file": "/videos/icecream.mp4",
     "caption": "A tiny moment, but full of happiness",
     "favorite": true
   },
@@ -155,7 +159,7 @@
     "id": "photo20",
     "title": "Random Sky Clip",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (21).jpg",
+    "file": "/videos/randomsky.mp4",
     "caption": "A random moment that became meaningful",
     "favorite": true
   },
@@ -163,7 +167,7 @@
     "id": "photo21",
     "title": "Matching Together",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (22).jpg",
+    "file": "/assets/s3.jpeg",
     "caption": "Matching outfits, matching vibes",
     "favorite": true
   },
@@ -171,7 +175,7 @@
     "id": "photo22",
     "title": "Fun Moment",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (23).jpg",
+    "file": "/videos/fun.mp4",
     "caption": "Just us, being silly and happy",
     "favorite": true
   },
@@ -179,7 +183,7 @@
     "id": "photo23",
     "title": "Our First Selfie",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (24).jpg",
+    "file": "/assets/s4.jpeg",
     "caption": "Our first selfie together… unforgettable",
     "favorite": true
   },
@@ -187,7 +191,7 @@
     "id": "photo24",
     "title": "Fit Check Moment",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (25).jpg",
+    "file": "/videos/fitcheck.mp4",
     "caption": "You looked adorable here",
     "favorite": true
   },
@@ -195,7 +199,7 @@
     "id": "photo25",
     "title": "First Hug",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (26).jpg",
+    "file": "/assets/s5.jpeg",
     "caption": "That first warm hug… still the best feeling",
     "favorite": true
   },
@@ -203,9 +207,8 @@
     "id": "photo27",
     "title": "Ranibaug Selfie Video",
     "date": "2023-11-18",
-    "file": "/RashVijay/download (27).mp4",
+    "file": "/videos/v3ranibaugselfivideo.mp4",
     "caption": "A simple moment that became special",
     "favorite": true
   }
 ]
-
