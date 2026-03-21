@@ -183,8 +183,8 @@ export default function Photos() {
                     <video
                       src={item.file}
                       muted
-                      autoPlay
-                      loop
+                      // autoPlay
+                      // loop
                       playsInline
                       style={{ willChange: "transform" }}
                       preload="metadata"

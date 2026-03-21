@@ -43,7 +43,8 @@ export default function Home() {
 
   // --- Curtain / Entry Animation State ---
   const [curtainOpen, setCurtainOpen] = useState(false); // toggles open animation
-  const [showCurtain, setShowCurtain] = useState(true); // remove curtain from DOM after open
+  const hasSeenCurtain = sessionStorage.getItem("seenCurtain");
+const [showCurtain, setShowCurtain] = useState(!hasSeenCurtain); // remove curtain from DOM after open
   const [sparkles, setSparkles] = useState([]); // sparkle burst when curtain opens
   const sparkleIdRef = useRef(0);
 
@@ -106,6 +107,7 @@ export default function Home() {
     // remove curtain DOM after final animation so it doesn't block clicks
     const removeTimeout = setTimeout(() => {
       setShowCurtain(false);
+sessionStorage.setItem("seenCurtain", "true");
     }, removeCurtainAfter + openDelay);
 
     return () => {
@@ -356,12 +358,18 @@ const handleMouseMove = (e) => {
     ),
     [],
   );
+  const [showBg, setShowBg] = useState(false);
+
+useEffect(() => {
+  const t = setTimeout(() => setShowBg(true), 200);
+  return () => clearTimeout(t);
+}, []);
   return (
     <div
       className="min-h-screen relative overflow-hidden transition-colors duration-1000"
       style={{ background: backgroundStyle }}
     >
-      {BackgroundLayer}
+      {showBg && BackgroundLayer}
 
       {/* TEXTURE OVERLAY */}
       <div
@@ -412,7 +420,7 @@ const handleMouseMove = (e) => {
             theme === "dark" ? "opacity-[0.05]" : "opacity-40"
           }`}
           style={{
-            transform: `translate(${mousePos.x * -25}px, ${
+            transform: `translate3d(${mousePos.x * -25}px, ${
               mousePos.y * -15
             }px, 0)`,
           }}
