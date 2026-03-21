@@ -62,10 +62,11 @@ function Entry() {
       );
     };
 
-    if (window.innerWidth > 768) {
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
-    }
+    // if (window.innerWidth > 768) {
+    //   window.addEventListener("mousemove", handleMouseMove);
+    //   return () => window.removeEventListener("mousemove", handleMouseMove);
+    // }
+    if (window.innerWidth < 768) return;
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -101,7 +102,9 @@ function Entry() {
     }, 1200);
   };
   const petals = useMemo(() => {
-    return [...Array(15)].map(() => ({
+    const count = window.innerWidth < 768 ? 6 : 15;
+
+    return [...Array(count)].map(() => ({
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 5}s`,
       duration: `${8 + Math.random() * 7}s`,
@@ -262,6 +265,7 @@ function Entry() {
         }
         
         .floating-rose {
+        will-change: transform;
           position: absolute;
           opacity: 0.4;
           filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));

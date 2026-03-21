@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useEffect, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { storage } from "./lib/storage";
 import { lazy, Suspense } from "react";
 
@@ -38,7 +38,6 @@ const queryClient = new QueryClient();
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isSetupComplete = storage.isSetupComplete();
   const isUnlocked = storage.isUnlocked();
-
   if (!isSetupComplete) {
     return <Navigate to="/onboarding" replace />;
   }
@@ -52,19 +51,45 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 export default function App() {
   const { resumeMusic } = useGlobalMusic();
+  const [appReady, setAppReady] = useState(false);
 
   useEffect(() => {
-    resumeMusic();
-  }, [resumeMusic]);
+    const t = setTimeout(() => {
+      resumeMusic();
+    }, 300);
 
+    return () => clearTimeout(t);
+  }, [resumeMusic]);
+  useEffect(() => {
+    const interval = setInterval(() => {}, 2000);
+    return () => clearInterval(interval);
+  }, []);
   useEffect(() => {
     const theme = storage.getTheme();
     document.documentElement.classList.toggle("dark", theme === "dark");
   }, []);
-  useEffect(() => {
-    import("./pages/Home");
-  }, []);
+    useEffect(() => {
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(() => {
+          import("./pages/Home");
+          import("./pages/Entry");
+        });
+      } else {
+        const t = setTimeout(() => {
+          import("./pages/Home");
+          import("./pages/Entry");
+        }, 300);
 
+        return () => clearTimeout(t);
+      }
+    }, []);
+
+    return () => clearTimeout(t);
+  }, []);
+  useEffect(() => {
+    const t = setTimeout(() => setAppReady(true), 200);
+    return () => clearTimeout(t);
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -78,9 +103,9 @@ export default function App() {
         <Suspense
           fallback={
             <div className="flex items-center justify-center min-h-screen px-6">
-              <div className="bg-white/40 backdrop-blur-xl border border-white/40 shadow-[0_10px_40px_rgba(255,150,170,0.25)] rounded-3xl px-10 py-12 text-center space-y-6 max-w-sm w-full">
+              <div className="bg-white/40 backdrop-blur-md border border-white/40 shadow-[0_10px_40px_rgba(255,150,170,0.25)] rounded-3xl px-10 py-12 text-center space-y-6 max-w-sm w-full">
                 <div className="relative flex items-center justify-center w-24 h-24 mx-auto">
-                  <div className="absolute w-20 h-20 rounded-full bg-rose-200/40 blur-xl animate-pulse"></div>
+                  <div className="absolute w-20 h-20 rounded-full bg-rose-200/40 blur-md animate-pulse"></div>
 
                   <Heart className="w-12 h-12 text-rose-500 animate-pulse z-10" />
 
@@ -88,9 +113,6 @@ export default function App() {
                     ♡
                   </span>
                   <span className="absolute text-rose-300 text-sm animate-bounce delay-200 -bottom-1 right-4">
-                    ♡
-                  </span>
-                  <span className="absolute text-rose-300 text-sm animate-bounce delay-300 top-3 -right-2">
                     ♡
                   </span>
                 </div>
@@ -104,187 +126,189 @@ export default function App() {
                     Every beautiful memory is getting ready ❤️
                   </p>
                   <div className="w-full h-1 bg-rose-100 rounded-full overflow-hidden mt-4">
-                    <div className="h-full bg-gradient-to-r from-rose-400 via-pink-400 to-rose-500 animate-[loading_2s_linear_infinite] w-1/3"></div>
+                    <div className="h-full bg-gradient-to-r from-rose-400 via-pink-400 to-rose-500 animate-[loading_3s_linear_infinite] w-1/3"></div>
                   </div>
                 </div>
               </div>
             </div>
           }
         >
-          <Routes>
-            {/* ⭐ ENTRY PAGE FIRST */}
-            <Route path="/" element={<Entry />} />
+          {appReady && (
+            <Routes>
+              {/* ⭐ ENTRY PAGE FIRST */}
+              <Route path="/" element={<Entry />} />
 
-            {/* SETUP FLOW */}
-            <Route
-              path="/onboarding"
-              element={
-                storage.isSetupComplete() ? (
-                  <Navigate to="/lock" replace />
-                ) : (
-                  <Onboarding />
-                )
-              }
-            />
-            <Route path="/lock" element={<LockScreen />} />
+              {/* SETUP FLOW */}
+              <Route
+                path="/onboarding"
+                element={
+                  storage.isSetupComplete() ? (
+                    <Navigate to="/lock" replace />
+                  ) : (
+                    <Onboarding />
+                  )
+                }
+              />
+              <Route path="/lock" element={<LockScreen />} />
 
-            {/* PROTECTED PAGES */}
-            <Route
-              path="/home"
-              element={
-                <ProtectedRoute>
-                  <Home />
-                </ProtectedRoute>
-              }
-            />
+              {/* PROTECTED PAGES */}
+              <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/daily-message"
-              element={
-                <ProtectedRoute>
-                  <DailyMessage />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/daily-message"
+                element={
+                  <ProtectedRoute>
+                    <DailyMessage />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/timeline"
-              element={
-                <ProtectedRoute>
-                  <Timeline />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/timeline"
+                element={
+                  <ProtectedRoute>
+                    <Timeline />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/coupans"
-              element={
-                <ProtectedRoute>
-                  <LoveCoupans />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/coupans"
+                element={
+                  <ProtectedRoute>
+                    <LoveCoupans />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/settings"
-              element={
-                <ProtectedRoute>
-                  <Settings />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute>
+                    <Settings />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/voice-notes"
-              element={
-                <ProtectedRoute>
-                  <VoiceNotes />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/voice-notes"
+                element={
+                  <ProtectedRoute>
+                    <VoiceNotes />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/moods"
-              element={
-                <ProtectedRoute>
-                  <Moods />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/moods"
+                element={
+                  <ProtectedRoute>
+                    <Moods />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/affirmations"
-              element={
-                <ProtectedRoute>
-                  <Affirmations />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/affirmations"
+                element={
+                  <ProtectedRoute>
+                    <Affirmations />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/songs"
-              element={
-                <ProtectedRoute>
-                  <Songs />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/songs"
+                element={
+                  <ProtectedRoute>
+                    <Songs />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/shayaris"
-              element={
-                <ProtectedRoute>
-                  <Shayaris />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/shayaris"
+                element={
+                  <ProtectedRoute>
+                    <Shayaris />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/photos"
-              element={
-                <ProtectedRoute>
-                  <Photos />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/photos"
+                element={
+                  <ProtectedRoute>
+                    <Photos />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/calendar"
-              element={
-                <ProtectedRoute>
-                  <Calendar />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/calendar"
+                element={
+                  <ProtectedRoute>
+                    <Calendar />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/fun-zone"
-              element={
-                <ProtectedRoute>
-                  <FunZone />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/fun-zone"
+                element={
+                  <ProtectedRoute>
+                    <FunZone />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/special-events"
-              element={
-                <ProtectedRoute>
-                  <SpecialEvents />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/special-events"
+                element={
+                  <ProtectedRoute>
+                    <SpecialEvents />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/food-picker"
-              element={
-                <ProtectedRoute>
-                  <FoodPicker />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/food-picker"
+                element={
+                  <ProtectedRoute>
+                    <FoodPicker />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/proposals"
-              element={
-                <ProtectedRoute>
-                  <Proposals />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/proposals"
+                element={
+                  <ProtectedRoute>
+                    <Proposals />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/reasons"
-              element={
-                <ProtectedRoute>
-                  <Reasons />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/reasons"
+                element={
+                  <ProtectedRoute>
+                    <Reasons />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+              {/* 404 */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          )}
         </Suspense>
       </TooltipProvider>
     </QueryClientProvider>

@@ -15,8 +15,17 @@ export default function DailyMessage() {
   const [revealed, setRevealed] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState(null);
+ const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  const profile = storage.getUserProfile();
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+const profile = useMemo(() => storage.getUserProfile(), []);
 
   /* Select today's message */
   useEffect(() => {
@@ -54,7 +63,8 @@ export default function DailyMessage() {
   };
 
   const risingHearts = React.useMemo(() => {
-    return [...Array(14)].map(() => ({
+    const count = isMobile ? 8 : 14;
+    return [...Array(count)].map(() => ({
       left: `${5 + Math.random() * 90}%`,
       delay: `${Math.random() * 6}s`,
       size: `${25 + Math.random() * 30}px`,
@@ -64,7 +74,8 @@ export default function DailyMessage() {
   }, []);
 
   const floatingEmojis = React.useMemo(() => {
-    return [...Array(18)].map(() => ({
+    const count = isMobile ? 10 : 18;
+    return [...Array(count)].map(() => ({
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 5}s`,
       size: `${18 + Math.random() * 20}px`,
@@ -73,7 +84,8 @@ export default function DailyMessage() {
   }, []);
 
   const burstEmojis = React.useMemo(() => {
-    return [...Array(6)].map((_, i) => ({
+    const count = isMobile ? 3 : 6;
+    return [...Array(count)].map((_, i) => ({
       left: `${30 + Math.random() * 40}%`,
       top: `${10 + Math.random() * 40}%`,
       delay: `${i * 0.3}s`,
@@ -134,7 +146,7 @@ export default function DailyMessage() {
         .emoji-float {
           position: absolute;
           bottom: -40px;
-          animation: floatEmoji 8s linear infinite;
+          animation: floatEmoji 10s linear infinite;
           pointer-events: none;
           opacity: 0.5;
           z-index: 40;  /* NOW ABOVE CARD */
@@ -154,7 +166,7 @@ export default function DailyMessage() {
         .heart-rise {
           position: absolute;
           bottom: -50px;
-          animation: heartRise 9s linear infinite;
+          animation: heartRise 11s linear infinite;
           pointer-events: none;
           filter: drop-shadow(0 0 14px rgba(255, 120, 150, 0.6));
           z-index: 50; /* FIXED: HEARTS NOW IN FRONT */

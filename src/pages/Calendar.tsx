@@ -34,22 +34,9 @@ export default function Calendar() {
   const daysLeft = (date: string) => {
     return dayjs(date).diff(today, "day");
   };
-
   const countdownEvents = useMemo(() => ["birthday", "anniversary"], []);
 
-  const sortedEvents = useMemo(() => {
-    return [...calendarData].sort((a, b) => {
-      if (a.sortOrder && b.sortOrder) {
-        if (a.sortOrder !== b.sortOrder) {
-          return a.sortOrder - b.sortOrder;
-        }
-      }
 
-      return dayjs(a.date).diff(dayjs(b.date));
-    });
-  }, []);
-
-  const nextEvent = sortedEvents.find((e) => daysLeft(e.date) >= 0);
 
   const typeColors: Record<string, string> = {
     birthday: "bg-rose/20 text-rose border-rose/40",
@@ -68,6 +55,20 @@ const BackgroundLayer = useMemo(
   ),
   []
 );
+  const sortedEvents = useMemo(() => {
+    return [...calendarData].sort((a, b) => {
+      if (a.sortOrder && b.sortOrder) {
+        if (a.sortOrder !== b.sortOrder) {
+          return a.sortOrder - b.sortOrder;
+        }
+      }
+
+      return dayjs(a.date).diff(dayjs(b.date));
+    });
+  }, []);
+
+  const nextEvent = sortedEvents.find((e) => daysLeft(e.date) >= 0);
+
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
@@ -87,7 +88,7 @@ const BackgroundLayer = useMemo(
 </Link>
 
         {/* HEADER */}
-        <div className="text-center mb-8 animate-fade-in">
+        <div className="text-center mb-8 md:animate-fade-in">
           <div className="text-6xl mb-4">💖</div>
           <h1 className="text-4xl md:text-5xl font-handwriting text-foreground drop-shadow mb-3">
             Our Love Calendar
@@ -99,7 +100,7 @@ const BackgroundLayer = useMemo(
 
         {/* NEXT UPCOMING EVENT */}
         {nextEvent && (
-          <div className="text-center mb-10 animate-fade-in">
+          <div className="text-center mb-10 md:animate-fade-in">
             <p className="text-lg text-primary font-medium">
               Next Special Day in{" "}
               <span className="font-bold text-rose">
@@ -124,13 +125,14 @@ const BackgroundLayer = useMemo(
             return (
               <Card
                 key={event.id}
-                className="overflow-hidden rounded-2xl bg-card/90 backdrop-blur-lg shadow-[var(--shadow-romantic)] animate-fade-in"
+                className="overflow-hidden rounded-2xl bg-card/90 backdrop-blur-lg shadow-[var(--shadow-romantic)] md:animate-fade-in"
                 style={{ animationDelay: `${index * 0.07}s` }}
               >
                 {/* IMAGE */}
                 <div className="relative h-48 w-full overflow-hidden">
                   <img
                     loading="lazy"
+                    style={{ willChange: "transform" }}
                     decoding="async"
                     src={event.image}
                     alt={event.title}

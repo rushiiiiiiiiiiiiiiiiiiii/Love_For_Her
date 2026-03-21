@@ -26,7 +26,16 @@ export default function Onboarding() {
   // const [confirmPin, setConfirmPin] = useState("");
   // const [isConfirmMode, setIsConfirmMode] = useState(false);
   const [theme, setTheme] = useState("light");
+const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
   // Visual State
   const mousePosRef = useRef({ x: 0, y: 0 });
   const [spotlightPos, setSpotlightPos] = useState({ x: "50%", y: "50%" });
@@ -73,29 +82,42 @@ export default function Onboarding() {
   // -------------------------------------
   // EFFECT: Parallax & Spotlight
   // -------------------------------------
-  useEffect(() => {
-    const handleMouseMove = (e) => {
+ useEffect(() => {
+  if (isMobile) return;
+
+  let ticking = false;
+
+  const handleMouseMove = (e) => {
+    if (ticking) return;
+    ticking = true;
+
+    requestAnimationFrame(() => {
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = (e.clientY / window.innerHeight) * 2 - 1;
+
       mousePosRef.current = { x, y };
       setSpotlightPos({ x: `${e.clientX}px`, y: `${e.clientY}px` });
-    };
-    if (window.innerWidth > 768) {
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
-    }
-  }, []);
+
+      ticking = false;
+    });
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+  return () => window.removeEventListener("mousemove", handleMouseMove);
+}, [isMobile]);
 
   const petals = useMemo(() => {
-    return [...Array(20)].map(() => ({
+    const count = isMobile ? 14 : 20;
+    return [...Array(count)].map(() => ({
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 5}s`,
       duration: `${8 + Math.random() * 5}s`,
       scale: 0.5 + Math.random() * 0.5,
     }));
-  }, []);
+  }, [isMobile]);
   const particles = useMemo(() => {
-    return [...Array(25)].map(() => ({
+    const count = isMobile ? 16 : 25;
+    return [...Array(count)].map(() => ({
       width: Math.random() * 3 + 1,
       height: Math.random() * 3 + 1,
       left: `${Math.random() * 100}%`,
@@ -114,13 +136,14 @@ export default function Onboarding() {
 
     rippleIdRef.current += 1;
     const newRippleId = rippleIdRef.current;
-    setRipples((prev) => [...prev, { x, y, id: newRippleId }]);
+    if (ripples.length > 6) return;
+setRipples((prev) => [...prev, { x, y, id: newRippleId }]);
     setTimeout(
       () => setRipples((prev) => prev.filter((r) => r.id !== newRippleId)),
       1000,
     );
 
-    const sparkCount = 8;
+    const sparkCount = isMobile ? 6 : 8;
     const newSparkles = Array.from({ length: sparkCount }).map(() => {
       sparkleIdRef.current += 1;
       return { x, y, id: sparkleIdRef.current };
@@ -284,7 +307,7 @@ export default function Onboarding() {
             theme === "dark" ? "opacity-[0.08]" : "opacity-60"
           }`}
           style={{
-            transform: `translate(${mousePosRef.current.x * 20}px, ${mousePosRef.current.y * 10}px)`,
+            transform: `translate3d(${mousePosRef.current.x * 20}px, ${mousePosRef.current.y * 10}px,0)`,
           }}
         ></div>
         <div
@@ -292,7 +315,7 @@ export default function Onboarding() {
             theme === "dark" ? "opacity-[0.08]" : "opacity-60"
           }`}
           style={{
-            transform: `translate(${mousePosRef.current.x * -20}px, ${mousePosRef.current.y * -10}px)`,
+            transform: `translate3d(${mousePosRef.current.x * -20}px, ${mousePosRef.current.y * -10}px, 0)`,
           }}
         ></div>
       </div>
@@ -627,7 +650,7 @@ export default function Onboarding() {
           background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
           width: 500px;
           height: 300px;
-          filter: blur(60px);
+          filter: blur(45px);
         }
 
         .cloud1 { top: -100px; left: -100px; }

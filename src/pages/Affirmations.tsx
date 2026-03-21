@@ -41,14 +41,19 @@ export default function Affirmations() {
   };
 
   const nextAffirmation = () => {
+    if (fadeDirection === "fade-out") return;
     transition((currentIndex + 1) % affirmationsData.length);
   };
 
   const randomAffirmation = () => {
+    if (fadeDirection === "fade-out") return;
     transition(Math.floor(Math.random() * affirmationsData.length));
   };
 
-  const current = affirmationsData[currentIndex];
+  const current = useMemo(
+  () => affirmationsData[currentIndex],
+  [currentIndex]
+);
   const categoryColors: Record<string, string> = {
     love: "from-rose to-primary",
     gratitude: "from-lavender to-peach",
@@ -59,13 +64,15 @@ export default function Affirmations() {
   };
 
   const floatingHearts = useMemo(() => {
-    return [...Array(18)].map(() => ({
+    const count = window.innerWidth < 768 ? 12 : 18;
+    return [...Array(count)].map(() => ({
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 4}s`,
       size: `${18 + Math.random() * 22}px`,
       emoji: ["💖", "💕", "✨", "💗"][Math.floor(Math.random() * 4)],
     }));
   }, []);
+  const visibleDots = affirmationsData.slice(0, 12);
   const BackgroundLayer = useMemo(
     () => (
       <>
@@ -99,6 +106,7 @@ export default function Affirmations() {
 
       <style>{`
         .floating-heart {
+        transform: translate3d(0,0,0);
   position: absolute;
   bottom: -40px;
   animation: floatUp 9s linear infinite;
@@ -117,7 +125,7 @@ export default function Affirmations() {
           width: 350px;
           height: 350px;
           border-radius: 50%;
-          filter: blur(120px);
+          filter: blur(80px);
           opacity: 0.4;
         }
         .orb-1 {
@@ -214,7 +222,7 @@ export default function Affirmations() {
 
           {/* Dots */}
           <div className="flex items-center justify-center gap-2 mt-6">
-            {affirmationsData.map((_, idx) => (
+            {visibleDots.map((_, idx) => (
               <div
                 key={idx}
                 className={`h-2 rounded-full transition-all duration-300 ${

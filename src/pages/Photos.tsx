@@ -51,7 +51,7 @@ export default function Photos() {
 
     slideshowInterval.current = setInterval(() => {
       setSlideIndex((prev) => (prev + 1) % photosData.length);
-    }, 4000);
+    }, 5000);
 
     return () => {
       if (slideshowInterval.current) {
@@ -160,7 +160,7 @@ export default function Photos() {
         </Card>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 content-visibility-auto gap-6">
           {photosData.map((item, index) => (
             <Card
               key={item.id}
@@ -176,7 +176,7 @@ export default function Photos() {
                 <div className="relative aspect-square rounded-xl overflow-hidden border-2 border-rose-300/50">
                   {/* BLUR LOADER */}
                   {loadingStates[index] && (
-                    <div className="absolute inset-0 bg-pink-200/20 backdrop-blur-md animate-pulse" />
+                    <div className="absolute inset-0 bg-pink-200/20 backdrop-blur-sm animate-pulse" />
                   )}
 
                   {isVideo(item.file) ? (
@@ -186,22 +186,24 @@ export default function Photos() {
                       autoPlay
                       loop
                       playsInline
-                      preload="auto"
+                      style={{ willChange: "transform" }}
+                      preload="metadata"
                       onLoadedData={() => handleLoaded(index)}
                       className={`w-full h-full object-cover transition-transform duration-500 ${
                         loadingStates[index]
-                          ? "blur-md opacity-40"
+                          ? "blur-sm opacity-40"
                           : "blur-0 opacity-100"
                       }`}
                     />
                   ) : (
                     <img
                       loading="lazy"
+                      style={{ willChange: "transform" }}
                       src={item.file}
                       onLoad={() => handleLoaded(index)}
                       className={`w-full h-full object-cover transition-transform duration-500 ${
                         loadingStates[index]
-                          ? "blur-md opacity-40"
+                          ? "blur-sm opacity-40"
                           : "blur-0 opacity-100"
                       }`}
                     />
@@ -235,6 +237,7 @@ export default function Photos() {
                 {isVideo(photosData[slideIndex].file) ? (
                   <video
                     src={photosData[slideIndex].file}
+                    style={{ willChange: "transform" }}
                     autoPlay
                     loop
                     muted
@@ -242,18 +245,19 @@ export default function Photos() {
                     onLoadedData={() => handleLoaded(slideIndex)}
                     className={`w-full h-full object-cover transition-transform duration-500 ${
                       loadingStates[slideIndex]
-                        ? "blur-md opacity-40"
+                        ? "blur-sm opacity-40"
                         : "blur-0 opacity-100"
                     }`}
                   />
                 ) : (
                   <img
                     loading="lazy"
+                    style={{ willChange: "transform" }}
                     src={photosData[slideIndex].file}
                     onLoad={() => handleLoaded(slideIndex)}
                     className={`w-full h-full object-cover transition-transform duration-500 ${
                       loadingStates[slideIndex]
-                        ? "blur-md opacity-40"
+                        ? "blur-sm opacity-40"
                         : "blur-0 opacity-100"
                     }`}
                   />
@@ -261,7 +265,7 @@ export default function Photos() {
               </div>
             </div>
 
-            <div className="mt-6 bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl text-white text-center border border-white/20 max-w-xl">
+            <div className="mt-6 bg-white/10 backdrop-blur-sm px-6 py-4 rounded-xl text-white text-center border border-white/20 max-w-xl">
               <h2 className="text-3xl font-handwriting">
                 {photosData[slideIndex].title}
               </h2>
@@ -300,7 +304,7 @@ export default function Photos() {
             <button
               onClick={closeFullscreen}
               className="absolute top-4 right-4 z-[60]
-               bg-white/20 backdrop-blur-md
+               bg-white/20 backdrop-blur-sm
                rounded-full p-2
                hover:bg-white/30
                transition"
@@ -314,27 +318,30 @@ export default function Photos() {
               <div className="relative rounded-xl overflow-hidden border-4 border-rose-200/60 shadow-xl max-h-[70vh]">
                 {isVideo(photosData[selectedMedia].file) ? (
                   <video
+
                     id="fullscreen-video"
                     src={photosData[selectedMedia].file}
                     autoPlay
                     controls
                     playsInline
-                    preload="auto"
+                    style={{ willChange: "transform" }}
+                    preload="metadata"
                     onLoadedData={() => handleLoaded(selectedMedia)}
                     className={`h-screen w-screen object-contain transition-opacity duration-500 ${
                       loadingStates[selectedMedia]
-                        ? "blur-md opacity-40"
+                        ? "blur-sm opacity-40"
                         : "blur-0 opacity-100"
                     }`}
                   />
                 ) : (
                   <img
                     loading="lazy"
+                    style={{ willChange: "transform" }}
                     src={photosData[selectedMedia].file}
                     onLoad={() => handleLoaded(selectedMedia)}
                     className={`h-screen w-screen object-contain transition-transform duration-500 ${
                       loadingStates[selectedMedia]
-                        ? "blur-md opacity-40"
+                        ? "blur-sm opacity-40"
                         : "blur-0 opacity-100"
                     }`}
                   />

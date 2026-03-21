@@ -48,13 +48,16 @@ export default function FoodPicker() {
     ),
     [],
   );
-  const selectedIds = new Set(selectedFood.map((f) => f.id));
+const selectedIds = useMemo(
+  () => new Set(selectedFood.map((f) => f.id)),
+  [selectedFood]
+);
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
       {/* ❤️ Romantic Confirmation Modal */}
       {confirmOpen && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[999] animate-fade-in">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[999] md:animate-fade-in">
           <div className="bg-card rounded-2xl shadow-xl p-8 max-w-sm w-[90%] text-center relative">
             <Heart className="w-10 h-10 text-rose mx-auto mb-3 animate-pulse" />
 
@@ -107,7 +110,7 @@ export default function FoodPicker() {
         </Link>
 
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="text-center mb-12 md:animate-fade-in">
           <div className="text-6xl mb-4">🍕</div>
           <h1 className="text-4xl md:text-5xl font-handwriting text-foreground mb-3">
             What Should We Eat Today?
@@ -123,7 +126,7 @@ export default function FoodPicker() {
 
         {/* Surprise card */}
         {surprise && (
-          <Card className="p-8 mb-8 bg-gradient-to-r from-primary/10 to-rose/10 border-primary/20 animate-fade-in">
+          <Card className="p-8 mb-8 bg-gradient-to-r from-primary/10 to-rose/10 border-primary/20 md:animate-fade-in">
             <div className="text-center">
               <div className="text-8xl mb-4">{surprise.emoji}</div>
               <h2 className="text-3xl font-handwriting text-foreground mb-2">
@@ -140,16 +143,16 @@ export default function FoodPicker() {
         )}
 
         {/* Food Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 content-visibility-auto gap-4">
           {foodData.map((food, index) => (
             <Card
               key={food.id}
-              className={`p-6 hover:shadow-[var(--shadow-romantic)] transition-all duration-300 md:hover:scale-105 bg-card/95 backdrop-blur cursor-pointer animate-fade-in group ${
+              className={`p-6 hover:shadow-[var(--shadow-romantic)] transition-all duration-300 md:hover:scale-105 will-change-transform bg-card/95 backdrop-blur cursor-pointer md:animate-fade-in group ${
                 selectedIds.has(food.id)
                   ? "border-primary shadow-[var(--shadow-romantic)]"
                   : ""
               }`}
-              style={{ animationDelay: `${index * 0.05}s` }}
+              style={{ animationDelay: `${index * 0.02}s` }}
               onClick={() => toggleFood(food)}
             >
               <div className="text-center">
@@ -169,7 +172,7 @@ export default function FoodPicker() {
 
         {/* If food selected */}
         {selectedFood.length > 0 && (
-          <Card className="mt-8 p-8 bg-card/95 backdrop-blur shadow-[var(--shadow-romantic)] animate-fade-in">
+          <Card className="mt-8 p-8 bg-card/95 backdrop-blur shadow-[var(--shadow-romantic)] md:animate-fade-in">
             <div className="text-center">
               <UtensilsCrossed className="w-12 h-12 mx-auto mb-4 text-primary" />
 

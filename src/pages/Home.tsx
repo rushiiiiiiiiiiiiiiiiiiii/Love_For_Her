@@ -117,14 +117,22 @@ export default function Home() {
   // --- EFFECT: Parallax & Spotlight ---
   useEffect(() => {
     if (window.innerWidth <= 768) return;
+let ticking = false;
 
-    const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = (e.clientY / window.innerHeight) * 2 - 1;
-      setMousePos({ x, y });
-      setSpotlightPos({ x: `${e.clientX}px`, y: `${e.clientY}px` });
-    };
+const handleMouseMove = (e) => {
+  if (ticking) return;
+  ticking = true;
 
+  requestAnimationFrame(() => {
+    const x = (e.clientX / window.innerWidth) * 2 - 1;
+    const y = (e.clientY / window.innerHeight) * 2 - 1;
+
+    setMousePos({ x, y });
+    setSpotlightPos({ x: `${e.clientX}px`, y: `${e.clientY}px` });
+
+    ticking = false;
+  });
+};
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -329,7 +337,8 @@ export default function Home() {
   const textSecondary = theme === "light" ? "text-gray-500" : "text-gray-400";
 
   const petals = React.useMemo(() => {
-    return [...Array(25)].map(() => ({
+    const count = window.innerWidth < 768 ? 14 : 25;
+    return [...Array(count)].map(() => ({
       left: `${Math.random() * 100}%`,
       delay: `${Math.random() * 10}s`,
       duration: `${6 + Math.random() * 6}s`,
@@ -378,7 +387,7 @@ export default function Home() {
 
       {/* PARALLAX ELEMENTS */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(window.innerWidth < 768 ? 5 : 8)].map((_, i) => (
           <div
             key={"heart-" + i}
             className="floating-heart"
@@ -395,7 +404,7 @@ export default function Home() {
             theme === "dark" ? "opacity-[0.05]" : "opacity-40"
           }`}
           style={{
-            transform: `translate(${mousePos.x * 20}px, ${mousePos.y * 10}px)`,
+            transform: `translate3d(${mousePos.x * 20}px, ${mousePos.y * 10}px, 0)`,
           }}
         ></div>
         <div
@@ -405,7 +414,7 @@ export default function Home() {
           style={{
             transform: `translate(${mousePos.x * -25}px, ${
               mousePos.y * -15
-            }px)`,
+            }px, 0)`,
           }}
         ></div>
 
@@ -495,7 +504,7 @@ export default function Home() {
 
       {/* MAIN CONTENT */}
       <div className="relative z-10 container mx-auto px-4 pt-28 pb-20 max-w-6xl">
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-16 md:animate-fade-in-up">
           <h1
             className={`text-5xl md:text-7xl font-handwriting mb-4 text-transparent bg-clip-text bg-gradient-to-br ${headerGradient} drop-shadow-sm`}
           >
@@ -509,7 +518,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:animate-fade-in-up">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
