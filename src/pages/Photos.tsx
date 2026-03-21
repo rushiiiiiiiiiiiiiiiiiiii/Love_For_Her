@@ -321,7 +321,7 @@ const goHome = () => {
               className="max-w-4xl w-full p-6 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl animate-fade-in"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative rounded-xl overflow-hidden border-4 border-rose-200/60 shadow-xl max-h-[70vh]">
+              <div className="relative w-full h-[60vh] sm:h-[70vh] rounded-xl overflow-hidden border-4 border-rose-200/60 shadow-xl">
                 {isVideo(photosData[selectedMedia].file) ? (
                   <video
 
@@ -333,7 +333,7 @@ const goHome = () => {
                     style={{ willChange: "transform" }}
                     preload="metadata"
                     onLoadedData={() => handleLoaded(selectedMedia)}
-                    className={`h-screen w-screen object-contain transition-opacity duration-500 ${
+                    className={`w-full h-full object-contain transition-opacity duration-500 ${
                       loadingStates[selectedMedia]
                         ? "blur-sm opacity-40"
                         : "blur-0 opacity-100"
@@ -345,7 +345,7 @@ const goHome = () => {
                     style={{ willChange: "transform" }}
                     src={photosData[selectedMedia].file}
                     onLoad={() => handleLoaded(selectedMedia)}
-                    className={`h-screen w-screen object-contain transition-transform duration-500 ${
+                    className={`w-full h-full object-contain transition-transform duration-500 ${
                       loadingStates[selectedMedia]
                         ? "blur-sm opacity-40"
                         : "blur-0 opacity-100"
