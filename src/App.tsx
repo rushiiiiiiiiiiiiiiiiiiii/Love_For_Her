@@ -68,23 +68,20 @@ export default function App() {
     const theme = storage.getTheme();
     document.documentElement.classList.toggle("dark", theme === "dark");
   }, []);
-    useEffect(() => {
-      if ("requestIdleCallback" in window) {
-        requestIdleCallback(() => {
-          import("./pages/Home");
-          import("./pages/Entry");
-        });
-      } else {
-        const t = setTimeout(() => {
-          import("./pages/Home");
-          import("./pages/Entry");
-        }, 300);
+  useEffect(() => {
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(() => {
+        import("./pages/Home");
+        import("./pages/Entry");
+      });
+    } else {
+      const t = setTimeout(() => {
+        import("./pages/Home");
+        import("./pages/Entry");
+      }, 300);
 
-        return () => clearTimeout(t);
-      }
-    }, []);
-
-    return () => clearTimeout(t);
+      return () => clearTimeout(t);
+    }
   }, []);
   useEffect(() => {
     const t = setTimeout(() => setAppReady(true), 200);
