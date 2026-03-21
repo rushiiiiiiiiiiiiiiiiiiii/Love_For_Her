@@ -6,7 +6,7 @@ import { ArrowLeft, UtensilsCrossed, Shuffle, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useMemo } from "react";
 import foodData from "@/data/foodOptions.json";
-
+import { useNavigate } from "react-router-dom";
 type Food = {
   id: number;
   name: string;
@@ -18,7 +18,7 @@ export default function FoodPicker() {
   const [selectedFood, setSelectedFood] = useState<Food[]>([]);
   const [surprise, setSurprise] = useState<Food | null>(null);
   const [confirmOpen, setConfirmOpen] = useState(false);
-
+const navigate = useNavigate();
   const toggleFood = (food: Food) => {
     setSelectedFood((prev) =>
       prev.find((f) => f.id === food.id)
@@ -52,6 +52,14 @@ const selectedIds = useMemo(
   () => new Set(selectedFood.map((f) => f.id)),
   [selectedFood]
 );
+
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
@@ -90,8 +98,7 @@ const selectedIds = useMemo(
       )}
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-5xl">
-        <Link to="/home" replace className="inline-block mb-6">
-          <button
+          <button onClick={goHome}
             className="
     flex items-center gap-2 px-5 py-2.5 rounded-full
     bg-white/40 backdrop-blur-md border border-white/40
@@ -107,7 +114,6 @@ const selectedIds = useMemo(
             <ArrowLeft className="w-4 h-4 shrink-0" />
             <span className="whitespace-nowrap">Back Home</span>
           </button>
-        </Link>
 
         {/* Header */}
         <div className="text-center mb-12 md:animate-fade-in">

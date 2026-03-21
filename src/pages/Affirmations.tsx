@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import affirmationsData from "@/data/affirmations.json";
 import { storage } from "@/lib/storage";
-
+import { useNavigate } from "react-router-dom";
 export default function Affirmations() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [fadeDirection, setFadeDirection] = useState("fade-in");
   const profile = storage.getUserProfile();
   const name = profile?.name || "my love";
-
+  const navigate = useNavigate();
   useEffect(() => {
     const saved = localStorage.getItem("favoriteAffirmations");
     if (saved) setFavorites(JSON.parse(saved));
@@ -50,10 +50,7 @@ export default function Affirmations() {
     transition(Math.floor(Math.random() * affirmationsData.length));
   };
 
-  const current = useMemo(
-  () => affirmationsData[currentIndex],
-  [currentIndex]
-);
+  const current = useMemo(() => affirmationsData[currentIndex], [currentIndex]);
   const categoryColors: Record<string, string> = {
     love: "from-rose to-primary",
     gratitude: "from-lavender to-peach",
@@ -82,6 +79,13 @@ export default function Affirmations() {
     ),
     [],
   );
+  const goHome = () => {
+    import("../pages/Home");
+
+    setTimeout(() => {
+      navigate("/home", { replace: true });
+    }, 50);
+  };
   return (
     <div className="min-h-screen romantic-gradient relative overflow-hidden">
       {BackgroundLayer}
@@ -156,18 +160,17 @@ export default function Affirmations() {
       `}</style>
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-3xl">
-        <Link to="/home" replace>
-          <Button
-            className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
+        <Button
+          onClick={goHome}
+          className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
     bg-white/40 backdrop-blur-md border border-white/40 
     text-rose-700 hover:bg-white/60 
     shadow-[0_6px_20px_rgba(255,120,150,0.25)] 
     transition-all duration-300 hover:scale-105"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back Home
-          </Button>
-        </Link>
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back Home
+        </Button>
 
         <div className="text-center mb-10 animate-fade-in">
           <div className="text-6xl mb-3">✨</div>

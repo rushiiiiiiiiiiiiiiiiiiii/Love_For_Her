@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useGlobalMusic } from "@/hooks/useGlobalMusic";
 import { useMemo } from "react";
-
+import { useNavigate } from "react-router-dom";
 // DIRECT SONG DATA (NO JSON)
 const songsData = [
   {
@@ -64,7 +64,7 @@ type Song = {
 export default function Songs() {
   const [modalSong, setModalSong] = useState<Song | null>(null);
   const { pauseMusic, resumeMusic } = useGlobalMusic();
-
+const navigate = useNavigate();
   const categoryColors: Record<string, string> = {
     romantic: "bg-rose/20 text-rose border-rose/30",
     classic: "bg-blue-200 text-blue-700 border-blue-300",
@@ -83,14 +83,20 @@ export default function Songs() {
     ),
     [],
   );
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-4xl">
         {/* BACK BUTTON */}
-        <Link to="/home" replace className="inline-block mb-6">
-          <button
+          <button onClick={goHome}
             className="
     flex items-center gap-2 px-5 py-2.5 rounded-full
     bg-white/40 backdrop-blur-md border border-white/40
@@ -106,7 +112,6 @@ export default function Songs() {
             <ArrowLeft className="w-4 h-4 shrink-0" />
             <span className="whitespace-nowrap">Back Home</span>
           </button>
-        </Link>
 
         {/* HEADER */}
         <div className="text-center mb-12 animate-fade-in">

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useState, useCallback } from "react";
 import { useMemo } from "react";
 import { storage } from "@/lib/storage";
+import { useNavigate } from "react-router-dom";
 type Reason = {
   id: number;
   text: string;
@@ -16,7 +17,7 @@ export default function Reasons() {
   const [randomReason, setRandomReason] = useState<Reason | null>(null);
   const profile = useMemo(() => storage.getUserProfile(), []);
 const name = profile?.name || "My Love";
-
+const navigate = useNavigate();
   const shuffleReason = useCallback(() => {
     if (!reasons.length) return;
 
@@ -34,6 +35,14 @@ const name = profile?.name || "My Love";
     ),
     [],
   );
+  
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative overflow-hidden">
       {BackgroundLayer}
@@ -52,8 +61,7 @@ const name = profile?.name || "My Love";
       </div>
 
       <div className="container mx-auto px-4 py-8 max-w-3xl relative z-10">
-        <Link to="/home" replace className="inline-block mb-6">
-          <button
+          <button onClick={goHome}
             className="
     flex items-center gap-2 px-5 py-2.5 rounded-full
     bg-white/40 backdrop-blur-md border border-white/40
@@ -69,7 +77,6 @@ const name = profile?.name || "My Love";
             <ArrowLeft className="w-4 h-4 shrink-0" />
             <span className="whitespace-nowrap">Back Home</span>
           </button>
-        </Link>
 
         {/* Heading */}
         <div className="text-center mb-10 animate-fade-in">

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import momentsData from "../data/proposals.json";
+import { useNavigate } from "react-router-dom";
 type Moment = {
   id: number;
   title: string;
@@ -63,7 +64,7 @@ export default function OurFutureTogether() {
     pinned: [],
     completed: [],
   });
-
+const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("All");
   const [selected, setSelected] = useState<Moment | null>(null);
   const [showPinnedOnly, setShowPinnedOnly] = useState(false);
@@ -138,24 +139,29 @@ export default function OurFutureTogether() {
     [],
   );
 
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen relative romantic-gradient overflow-x-hidden">
       {BackgroundLayer}
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-6xl">
         <div className="mb-6">
-          <Link to="/home" replace>
-            <Button
-    className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
+          <Button onClick={goHome}
+            className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
     bg-white/40 backdrop-blur-md border border-white/40 
     text-rose-700 hover:bg-white/60 
     shadow-[0_6px_20px_rgba(255,120,150,0.25)] 
     transition-all duration-300 hover:scale-105"
-  >
-    <ArrowLeft className="w-4 h-4" />
-    Back Home
-  </Button>
-          </Link>
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back Home
+          </Button>
         </div>
 
         <header className="text-center mb-8">

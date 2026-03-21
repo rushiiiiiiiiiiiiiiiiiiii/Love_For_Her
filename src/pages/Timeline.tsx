@@ -12,12 +12,12 @@ import {
 import { Link } from "react-router-dom";
 import timeline from "@/data/timeline.json";
 import { useMemo } from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function Timeline() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoplay, setAutoplay] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
+  const navigate = useNavigate();
   const currentMoment = timeline[currentIndex];
 
   /* ----------- HANDLE AUTOPLAY ----------- */
@@ -62,6 +62,14 @@ export default function Timeline() {
     ),
     [],
   );
+
+  const goHome = () => {
+    import("../pages/Home");
+
+    setTimeout(() => {
+      navigate("/home", { replace: true });
+    }, 50);
+  };
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
@@ -80,9 +88,9 @@ export default function Timeline() {
       `}</style>
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-4xl">
-        <Link to="/home" replace className="inline-block mb-6">
-          <button
-            className="
+        <button
+          onClick={goHome}
+          className="
     flex items-center gap-2 px-5 py-2.5 rounded-full
     bg-white/40 backdrop-blur-md border border-white/40
     text-rose-700 font-medium
@@ -93,11 +101,10 @@ export default function Timeline() {
     will-change-transform
     touch-manipulation
     "
-          >
-            <ArrowLeft className="w-4 h-4 shrink-0" />
-            <span className="whitespace-nowrap">Back Home</span>
-          </button>
-        </Link>
+        >
+          <ArrowLeft className="w-4 h-4 shrink-0" />
+          <span className="whitespace-nowrap">Back Home</span>
+        </button>
 
         {/* HEADER */}
         <div className="text-center mb-8 animate-fade-in">

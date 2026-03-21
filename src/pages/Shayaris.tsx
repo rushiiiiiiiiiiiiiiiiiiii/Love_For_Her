@@ -6,13 +6,14 @@ import { ArrowLeft, BookHeart, RefreshCw } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import shayarisData from "@/data/shayaris.json";
+import { useNavigate } from "react-router-dom";
 import { storage } from "@/lib/storage";
 export default function Shayaris() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showTranslation, setShowTranslation] = useState(false);
   const profile = useMemo(() => storage.getUserProfile(), []);
   const name = profile?.name || "My Love";
-
+const navigate = useNavigate();
   // random on open
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * shayarisData.length);
@@ -59,6 +60,13 @@ export default function Shayaris() {
     ),
     [],
   );
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
@@ -104,8 +112,7 @@ export default function Shayaris() {
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-3xl">
         {/* Header */}
-        <Link to="/home" replace className="inline-block mb-6">
-          <button
+          <button onClick={goHome}
             className="
     flex items-center gap-2 px-5 py-2.5 rounded-full
     bg-white/40 backdrop-blur-md border border-white/40
@@ -121,7 +128,6 @@ export default function Shayaris() {
             <ArrowLeft className="w-4 h-4 shrink-0" />
             <span className="whitespace-nowrap">Back Home</span>
           </button>
-        </Link>
 
         <div className="text-center mb-10 animate-fade-in">
           <div className="text-6xl mb-3">📖</div>

@@ -93,6 +93,15 @@ const name = profile?.name || "My Love";
       duration: 6 + Math.random() * 8,
     }));
   }, [sprinkleCount]);
+
+  
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative overflow-hidden">
       <BackgroundText />
@@ -118,8 +127,7 @@ const name = profile?.name || "My Love";
 
       {/* MAIN CONTENT */}
       <div className="container mx-auto px-4 py-8 relative z-50 max-w-4xl">
-        <Link to="/home" replace className="inline-block mb-6">
-          <button
+          <button onClick={goHome}
             className="
     flex items-center gap-2 px-5 py-2.5 rounded-full
     bg-white/40 backdrop-blur-md border border-white/40
@@ -133,9 +141,8 @@ const name = profile?.name || "My Love";
     "
           >
             <ArrowLeft className="w-4 h-4 shrink-0" />
-            <span className="whitespace-nowrap">h</span>
+            <span className="whitespace-nowrap">Back Home</span>
           </button>
-        </Link>
 
         <div className="text-center mb-12 animate-fade-in">
           <div className="text-6xl mb-4">🎤</div>

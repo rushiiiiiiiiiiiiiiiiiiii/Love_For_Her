@@ -8,6 +8,7 @@ import { ArrowLeft, Moon, Sun, User, Lock, Trash2, Heart } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { storage } from "@/lib/storage";
 import { toast } from "sonner";
+
 export default function Settings() {
   const navigate = useNavigate();
   const profile = useMemo(() => storage.getUserProfile(), []);
@@ -103,6 +104,13 @@ export default function Settings() {
     );
   }, [showClearModal, confirmClearData]);
 
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative pb-20">
       {BackgroundLayer}
@@ -160,8 +168,7 @@ export default function Settings() {
       `}</style>
 
       <div className="container mx-auto px-5 py-10 max-w-2xl relative z-10">
-        <Link to="/home" replace>
-          <Button
+        <Button onClick={goHome}
             className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
     bg-white/40 backdrop-blur-md border border-white/40 
     text-rose-700 hover:bg-white/60 
@@ -171,7 +178,6 @@ export default function Settings() {
             <ArrowLeft className="w-4 h-4" />
             Back Home
           </Button>
-        </Link>
 
         <div className="text-center fade-up mb-8">
           <h1 className="text-5xl font-handwriting text-foreground mb-1">

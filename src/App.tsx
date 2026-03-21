@@ -52,7 +52,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 export default function App() {
   const { resumeMusic } = useGlobalMusic();
   const [appReady, setAppReady] = useState(false);
-
+const [isNavigating, setIsNavigating] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => {
       resumeMusic();
@@ -130,6 +130,13 @@ export default function App() {
             </div>
           }
         >
+          {isNavigating && (
+  <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-rose-100 to-pink-100 flex items-center justify-center">
+    <div className="text-rose-500 text-xl animate-pulse font-semibold">
+      Loading ❤️
+    </div>
+  </div>
+)}
           {appReady && (
             <Routes>
               {/* ⭐ ENTRY PAGE FIRST */}

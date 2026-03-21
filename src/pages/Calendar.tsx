@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { HeartAnimation } from "@/components/HeartAnimation";
 import { BackgroundText } from "@/components/BackgroundText";
 import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   Calendar as CalendarIcon,
@@ -35,8 +36,7 @@ export default function Calendar() {
     return dayjs(date).diff(today, "day");
   };
   const countdownEvents = useMemo(() => ["birthday", "anniversary"], []);
-
-
+  const navigate = useNavigate();
 
   const typeColors: Record<string, string> = {
     birthday: "bg-rose/20 text-rose border-rose/40",
@@ -46,15 +46,15 @@ export default function Calendar() {
     trip: "bg-peach/20 text-peach border-peach/40",
     temple: "bg-rose/20 text-rose border-rose/40",
   };
-const BackgroundLayer = useMemo(
-  () => (
-    <>
-      <HeartAnimation />
-      <BackgroundText />
-    </>
-  ),
-  []
-);
+  const BackgroundLayer = useMemo(
+    () => (
+      <>
+        <HeartAnimation />
+        <BackgroundText />
+      </>
+    ),
+    [],
+  );
   const sortedEvents = useMemo(() => {
     return [...calendarData].sort((a, b) => {
       if (a.sortOrder && b.sortOrder) {
@@ -68,24 +68,29 @@ const BackgroundLayer = useMemo(
   }, []);
 
   const nextEvent = sortedEvents.find((e) => daysLeft(e.date) >= 0);
+  const goHome = () => {
+    import("../pages/Home");
 
+    setTimeout(() => {
+      navigate("/home", { replace: true });
+    }, 50);
+  };
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-4xl">
         {/* BACK BUTTON */}
-        <Link to="/home" replace>
-  <Button
-    className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
+        <Button
+          onClick={goHome}
+          className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
     bg-white/40 backdrop-blur-md border border-white/40 
     text-rose-700 hover:bg-white/60 
     shadow-[0_6px_20px_rgba(255,120,150,0.25)] 
     transition-all duration-300 hover:scale-105"
-  >
-    <ArrowLeft className="w-4 h-4" />
-    Back Home
-  </Button>
-</Link>
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back Home
+        </Button>
 
         {/* HEADER */}
         <div className="text-center mb-8 md:animate-fade-in">

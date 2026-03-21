@@ -16,12 +16,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import photosData from "@/data/photos.json";
 import { useGlobalMusic } from "@/hooks/useGlobalMusic";
-
+import { useNavigate } from "react-router-dom";
 export default function Photos() {
   const [selectedMedia, setSelectedMedia] = useState<number | null>(null);
   const [slideshowActive, setSlideshowActive] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
-
+const navigate = useNavigate();
   const [loadingStates, setLoadingStates] = useState(
     Array(photosData.length).fill(true),
   );
@@ -110,15 +110,22 @@ export default function Photos() {
     ),
     [],
   );
+  
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
 
       <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
-        <Link to="/home" replace>
-          <Button
+        <Button onClick={goHome}
             className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
-    bg-white/40 backdrop-blur hover:shadow-[0_0_20px_rgba(255,150,170,0.4)] transition-md border border-white/40 
+    bg-white/40 backdrop-blur-md border border-white/40 
     text-rose-700 hover:bg-white/60 
     shadow-[0_6px_20px_rgba(255,120,150,0.25)] 
     transition-all duration-300 hover:scale-105"
@@ -126,7 +133,6 @@ export default function Photos() {
             <ArrowLeft className="w-4 h-4" />
             Back Home
           </Button>
-        </Link>
 
         <div className="text-center mb-12">
           <div className="text-6xl mb-4">💞📸</div>

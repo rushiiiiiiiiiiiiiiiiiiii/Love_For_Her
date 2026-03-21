@@ -9,14 +9,14 @@ import { toast } from "sonner";
 import messages from "@/data/messages.json";
 import { BackgroundText } from "@/components/BackgroundText";
 import { useMemo } from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function DailyMessage() {
   const [currentMessage, setCurrentMessage] = useState(messages[0]);
   const [revealed, setRevealed] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState(null);
  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
+const navigate = useNavigate();
 useEffect(() => {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
@@ -102,6 +102,14 @@ const profile = useMemo(() => storage.getUserProfile(), []);
   ),
   []
 );
+
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative overflow-hidden">
       {BackgroundLayer}

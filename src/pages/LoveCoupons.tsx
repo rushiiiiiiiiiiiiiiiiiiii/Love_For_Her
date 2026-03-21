@@ -6,7 +6,7 @@ import { BackgroundText } from "@/components/BackgroundText";
 import { ArrowLeft, Heart, Gift, Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
-
+import { useNavigate } from "react-router-dom";
 // Love Coupons Book - single-file React component
 // Drop this file in your pages/components folder and import it in routes.
 
@@ -104,7 +104,7 @@ export default function LoveCoupons() {
     }
     return defaultCoupons;
   });
-
+const navigate = useNavigate();
   const [selected, setSelected] = useState<Coupon | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [justRedeemed, setJustRedeemed] = useState<string | null>(null);
@@ -149,24 +149,30 @@ const BackgroundLayer = useMemo(
   ),
   []
 );
+
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-4xl">
         <div className="mb-6">
-          <Link to="/home" replace>
-            <Button
-    className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
+          <Button onClick={goHome}
+            className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
     bg-white/40 backdrop-blur-md border border-white/40 
     text-rose-700 hover:bg-white/60 
     shadow-[0_6px_20px_rgba(255,120,150,0.25)] 
     transition-all duration-300 hover:scale-105"
-  >
-    <ArrowLeft className="w-4 h-4" />
-    Back Home
-  </Button>
-          </Link>
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back Home
+          </Button>
         </div>
 
         <div className="text-center mb-8">

@@ -5,9 +5,11 @@ import { HeartAnimation } from "@/components/HeartAnimation";
 import { BackgroundText } from "@/components/BackgroundText";
 import { ArrowLeft, Heart } from "lucide-react";
 import { storage } from "@/lib/storage";
+import { useNavigate } from "react-router-dom";
 export default function SpecialEvents() {
   const profile = useMemo(() => storage.getUserProfile(), []);
   const name = profile?.name || "My Love";
+  const navigate = useNavigate();
   const BackgroundLayer = useMemo(
     () => (
       <>
@@ -17,6 +19,14 @@ export default function SpecialEvents() {
     ),
     [],
   );
+  
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen relative bg-gradient-to-b from-pink-100 via-pink-200 to-pink-300 overflow-hidden pb-32">
       {BackgroundLayer}
@@ -140,18 +150,16 @@ export default function SpecialEvents() {
       {/* CONTENT */}
       <div className="relative z-10 container mx-auto px-6 max-w-4xl">
         <div className="pt-10 pb-6 fade-up">
-          <Link to="/home" replace>
-            <Button
-              className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
+          <Button onClick={goHome}
+            className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
     bg-white/40 backdrop-blur-md border border-white/40 
     text-rose-700 hover:bg-white/60 
     shadow-[0_6px_20px_rgba(255,120,150,0.25)] 
     transition-all duration-300 hover:scale-105"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back Home
-            </Button>
-          </Link>
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back Home
+          </Button>
         </div>
 
         <h1 className="fade-up text-center text-6xl md:text-7xl font-handwriting text-pink-900 mb-4">

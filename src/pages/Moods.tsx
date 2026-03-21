@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useState, useMemo } from "react";
 import moodsData from "@/data/moods.json";
 import { storage } from "@/lib/storage";
+import { useNavigate } from "react-router-dom";
 type Mood = {
   id: string;
   name: string;
@@ -20,7 +21,7 @@ export default function Moods() {
   const [selectedMood, setSelectedMood] = useState<Mood | null>(null);
   const profile = storage.getUserProfile();
   const name = profile?.name || "my love";
-
+const navigate = useNavigate();
   const moodColors = useMemo(
     () => ({
       rose: "from-rose-light to-rose",
@@ -44,13 +45,20 @@ export default function Moods() {
     ),
     [],
   );
+  
+const goHome = () => {
+  import("../pages/Home");
+
+  setTimeout(() => {
+    navigate("/home", { replace: true });
+  }, 50);
+};
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-4xl">
-        <Link to="/home" replace className="inline-block mb-6">
-          <button
+          <button onClick={goHome}
             className="
     flex items-center gap-2 px-5 py-2.5 rounded-full
     bg-white/40 backdrop-blur-md border border-white/40
@@ -66,7 +74,6 @@ export default function Moods() {
             <ArrowLeft className="w-4 h-4 shrink-0" />
             <span className="whitespace-nowrap">Back Home</span>
           </button>
-        </Link>
 
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-handwriting text-foreground mb-3">
