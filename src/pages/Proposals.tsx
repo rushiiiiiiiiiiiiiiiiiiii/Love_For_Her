@@ -344,19 +344,19 @@ const goHome = () => {
 
       {/* Selected modal */}
       {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setSelected(null)}
           />
-          <div className="relative z-10 max-w-2xl w-full">
+          <div className="relative z-10 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <Card className="p-6">
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col sm:flex-row items-start gap-4">
                 <img
                   loading="lazy"
                   src={selected.image}
                   alt={selected.title}
-                  className="w-36 h-36 object-cover rounded-2xl"
+                  className="w-full sm:w-36 h-48 sm:h-36 object-cover rounded-2xl"
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
@@ -378,7 +378,7 @@ const goHome = () => {
                     {selected.description}
                   </p>
 
-                  <div className="mt-4 flex gap-3">
+                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
                     <Button
                       onClick={() => {
                         toggleComplete(selected.id);
