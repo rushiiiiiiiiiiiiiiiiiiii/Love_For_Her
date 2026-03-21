@@ -6,7 +6,7 @@ import { BackgroundText } from "@/components/BackgroundText";
 
 import { ArrowLeft, Play, Pause, Mic, Heart, Calendar } from "lucide-react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect, useMemo } from "react";
 import voiceNotesData from "@/data/voiceNotes.json";
 import { useGlobalMusic } from "@/hooks/useGlobalMusic";
@@ -22,7 +22,7 @@ export default function VoiceNotes() {
   const { pauseMusic, resumeMusic } = useGlobalMusic();
   const profile = useMemo(() => storage.getUserProfile(), []);
 const name = profile?.name || "My Love";
-
+const navigate = useNavigate()
   const categoryColors: Record<string, string> = {
     daily: "bg-rose/20 text-rose border-rose/30",
     romantic: "bg-primary/20 text-primary border-primary/30",
