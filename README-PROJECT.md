@@ -1,4 +1,4 @@
-# For Her — From Rushi ❤️
+# For Her — From Vijay ❤️
 
 A beautiful, romantic, frontend-only website created with love.
 
@@ -152,7 +152,7 @@ import data from "@/data/yourdata.json";
 
 ## 💝 First-Person Voice
 
-All content is written in first-person as Rushi:
+All content is written in first-person as Vijay:
 
 - "I made this for you"
 - "I love you"
@@ -240,4 +240,4 @@ Deploy the `dist` folder to:
 
 This is a labor of love. Take your time customizing it with your memories, your voice, your story. Every detail matters when it comes from the heart.
 
-Made with ❤️ by Rushi
+Made with ❤️ by Vijay

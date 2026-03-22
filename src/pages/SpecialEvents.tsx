@@ -19,14 +19,14 @@ export default function SpecialEvents() {
     ),
     [],
   );
-  
-const goHome = () => {
-  import("../pages/Home");
 
-  setTimeout(() => {
-    navigate("/home", { replace: true });
-  }, 50);
-};
+  const goHome = () => {
+    import("../pages/Home");
+
+    setTimeout(() => {
+      navigate("/home", { replace: true });
+    }, 50);
+  };
   return (
     <div className="min-h-screen relative bg-gradient-to-b from-pink-100 via-pink-200 to-pink-300 overflow-hidden pb-32">
       {BackgroundLayer}
@@ -150,7 +150,8 @@ const goHome = () => {
       {/* CONTENT */}
       <div className="relative z-10 container mx-auto px-6 max-w-4xl">
         <div className="pt-10 pb-6 fade-up">
-          <Button onClick={goHome}
+          <Button
+            onClick={goHome}
             className="mb-6 flex items-center gap-2 rounded-full px-5 py-2 
     bg-white/40 backdrop-blur-md border border-white/40 
     text-rose-700 hover:bg-white/60 
@@ -347,7 +348,7 @@ const goHome = () => {
             </p>
 
             <p className="text-2xl md:text-5xl font-bold text-pink-800 my-3 md:my-4 drop-shadow">
-              Rushi ❤️ {name}
+              Vijay ❤️ {name}
             </p>
 
             <p className="text-pink-900 text-xs md:text-base tracking-wide">
@@ -416,7 +417,7 @@ const goHome = () => {
               {/* Right signature */}
               <div className="text-center">
                 <p className="text-pink-800 font-handwriting text-base md:text-xl mb-1">
-                  Rushi
+                  Vijay
                 </p>
                 <div className="w-16 md:w-24 mx-auto border-t border-pink-400"></div>
                 <p className="text-[10px] md:text-xs text-pink-600 mt-1">

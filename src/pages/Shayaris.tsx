@@ -13,7 +13,7 @@ export default function Shayaris() {
   const [showTranslation, setShowTranslation] = useState(false);
   const profile = useMemo(() => storage.getUserProfile(), []);
   const name = profile?.name || "My Love";
-const navigate = useNavigate();
+  const navigate = useNavigate();
   // random on open
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * shayarisData.length);
@@ -60,13 +60,13 @@ const navigate = useNavigate();
     ),
     [],
   );
-const goHome = () => {
-  import("../pages/Home");
+  const goHome = () => {
+    import("../pages/Home");
 
-  setTimeout(() => {
-    navigate("/home", { replace: true });
-  }, 50);
-};
+    setTimeout(() => {
+      navigate("/home", { replace: true });
+    }, 50);
+  };
   return (
     <div className="min-h-screen romantic-gradient relative">
       {BackgroundLayer}
@@ -112,8 +112,9 @@ const goHome = () => {
 
       <div className="container mx-auto px-4 py-8 relative z-10 max-w-3xl">
         {/* Header */}
-          <button onClick={goHome}
-            className="
+        <button
+          onClick={goHome}
+          className="
     flex items-center gap-2 px-5 py-2.5 rounded-full
     bg-white/40 backdrop-blur-md border border-white/40
     text-rose-700 font-medium
@@ -124,10 +125,10 @@ const goHome = () => {
     will-change-transform
     touch-manipulation
     "
-          >
-            <ArrowLeft className="w-4 h-4 shrink-0" />
-            <span className="whitespace-nowrap">Back Home</span>
-          </button>
+        >
+          <ArrowLeft className="w-4 h-4 shrink-0" />
+          <span className="whitespace-nowrap">Back Home</span>
+        </button>
 
         <div className="text-center mb-10 animate-fade-in">
           <div className="text-6xl mb-3">📖</div>
@@ -173,7 +174,7 @@ const goHome = () => {
           </p>
 
           <p className="text-center text-muted-foreground italic mb-6">
-            — Your Rushi ❤️
+            — Your Vijay ❤️
           </p>
 
           {/* Translation */}
