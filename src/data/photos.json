@@ -1,47 +1,47 @@
 [
   {
     "id": "photo1",
-    "title": "Our First Photo Together",
+    "title": "My Safe Place",
     "date": "2023-06-15",
     "file": "/RashVijay/download (10).jpg",
-    "caption": "The beginning of something beautiful",
+    "caption": "This is where I feel the safest… right next to you.",
     "favorite": true
   },
   {
     "id": "photo2",
-    "title": "That Ranibaug Trip",
+    "title": "Unplanned, Yet Perfect",
     "date": "2023-07-20",
     "file": "/RashVijay/download (8).jpg",
-    "caption": "The day we laughed, wandered and forgot the world",
+    "caption": "We didn’t plan this day… but it became one of my favorites.",
     "favorite": true
   },
   {
     "id": "photo3",
-    "title": "Our First Lunch Together",
+    "title": "Where It All Started",
     "date": "2023-08-10",
     "file": "/RashVijay/download (15) vid.mp4",
-    "caption": "My favorite sight in the world",
+    "caption": "It wasn’t just lunch… it was the start of us.",
     "favorite": true
   },
   {
     "id": "photo4",
-    "title": "Daily Meetings & Fun",
+    "title": "Our Little World",
     "date": "2023-09-05",
     "file": "/RashVijay/download (4).jpg",
-    "caption": "The fun we had together still makes me smile",
+    "caption": "Those random days with you became my happiest memories.",
     "favorite": false
   },
   {
     "id": "photo5",
-    "title": "That Flower Plug Day",
+    "title": "Peace With You",
     "date": "2023-10-12",
     "file": "/RashVijay/download (5).jpg",
-    "caption": "A quiet, warm, beautiful afternoon",
+    "caption": "That day was not just your birthday… it was about celebrating you in my life.",
     "favorite": false
   },
   {
     "id": "photo6",
-    "title": "Your Birthday",
+    "title": "Celebrating You",
     "date": "2023-11-18",
     "file": "/RashVijay/download (6).jpg",
     "caption": "Celebrating you felt like celebrating happiness itself",
@@ -49,42 +49,42 @@
   },
   {
     "id": "photo7",
-    "title": "Fallen Moment",
+    "title": "That One Look",
     "date": "2023-11-18",
     "file": "/RashVijay/download (12).jpg",
-    "caption": "That eye contact… I still feel it",
+    "caption": "You looked like a blessing I never deserved but always wanted.",
     "favorite": true
   },
   {
     "id": "photo8",
-    "title": "Loved Together",
+    "title": "Forever Replay",
     "date": "2023-11-18",
     "file": "/RashVijay/download (14) vid.mp4",
-    "caption": "A moment I keep replaying in my heart",
+    "caption": "Small moments with you… mean everything to me.",
     "favorite": true
   },
   {
     "id": "photo9",
-    "title": "Temple Meet",
+    "title": "A Blessing In My Life",
     "date": "2023-11-18",
     "file": "/RashVijay/download (9).jpg",
-    "caption": "You looked so pure in the dress my mom gifted you",
+    "caption": "With you, everything just feels right.",
     "favorite": true
   },
   {
     "id": "photo10",
-    "title": "Lovely Moment",
+    "title": "Little Forever Moments",
     "date": "2023-11-18",
     "file": "/RashVijay/download (7).jpg",
-    "caption": "These little moments stay with me forever",
+    "caption": "We didn’t just dance… our hearts did.",
     "favorite": true
   },
   {
     "id": "photo11",
-    "title": "Sweet Time Together",
+    "title": "Just Feels Right",
     "date": "2023-11-18",
     "file": "/RashVijay/download (11).jpg",
-    "caption": "Everything felt perfect with you",
+    "caption": "Your laugh is my favorite sound in the world.",
     "favorite": true
   },
   {
@@ -92,87 +92,87 @@
     "title": "Our First Dance",
     "date": "2023-11-18",
     "file": "/RashVijay/download (3).jpg",
-    "caption": "Our first dance… still my favorite memory",
+    "caption": "That smile… still melts me every time.",
     "favorite": true
   },
   {
     "id": "photo13",
-    "title": "Laughing Together",
+    "title": "Your Laugh",
     "date": "2023-11-18",
     "file": "/RashVijay/download (2).jpg",
-    "caption": "Your laugh makes every day feel lighter",
+    "caption": "In that moment… it felt like even God was smiling at us.",
     "favorite": true
   },
   {
     "id": "photo14",
-    "title": "Smiling Together",
+    "title": "That Smile",
     "date": "2023-11-18",
     "file": "/RashVijay/download (16) vid.mp4",
-    "caption": "Your smile here still melts me",
+    "caption": "With you, even the simplest things feel special.",
     "favorite": true
   },
   {
     "id": "photo15",
-    "title": "Temple Blessings",
+    "title": "Blessed Together",
     "date": "2023-11-18",
     "file": "/RashVijay/download (1).jpg",
-    "caption": "A moment full of blessings, faith and and our purity on god",
+    "caption": "Soft moments like this stay forever.",
     "favorite": true
   },
   {
     "id": "photo16",
-    "title": "Pani Puri Fun",
+    "title": "Simple Joys",
     "date": "2023-11-18",
     "file": "/RashVijay/download (17).jpg",
-    "caption": "The way we enjoy even simple things together",
+    "caption": "I wish I could freeze this laugh forever.",
     "favorite": true
   },
   {
     "id": "photo17",
-    "title": "Sweet Moments",
+    "title": "Soft Memories",
     "date": "2023-11-18",
     "file": "/RashVijay/download (18).jpg",
-    "caption": "A soft, sweet memory with you",
+    "caption": "Just ice cream… but with you, it felt like happiness.",
     "favorite": true
   },
   {
     "id": "photo18",
-    "title": "Laughing Again",
+    "title": "That Laughter",
     "date": "2023-11-18",
     "file": "/RashVijay/download (19).jpg",
-    "caption": "This laughter still echoes in my heart",
+    "caption": "A random moment… that became meaningful because of you.",
     "favorite": true
   },
   {
     "id": "photo19",
-    "title": "Ice Cream Joy",
+    "title": "Sweet Happiness",
     "date": "2023-11-18",
     "file": "/RashVijay/download (20).jpg",
-    "caption": "A tiny moment, but full of happiness",
+    "caption": "Matching outfits, matching hearts.",
     "favorite": true
   },
   {
     "id": "photo20",
-    "title": "Random Sky Clip",
+    "title": "Unexpected Meaning",
     "date": "2023-11-18",
     "file": "/RashVijay/download (21).jpg",
-    "caption": "A random moment that became meaningful",
+    "caption": "Just us… being silly and happy.",
     "favorite": true
   },
   {
     "id": "photo21",
-    "title": "Matching Together",
+    "title": "Matching Souls",
     "date": "2023-11-18",
     "file": "/RashVijay/download (22).jpg",
-    "caption": "Matching outfits, matching vibes",
+    "caption": "One selfie, a thousand emotions.",
     "favorite": true
   },
   {
     "id": "photo22",
-    "title": "Fun Moment",
+    "title": "Just Us",
     "date": "2023-11-18",
     "file": "/RashVijay/download (23).jpg",
-    "caption": "Just us, being silly and happy",
+    "caption": "You looked perfect… like always.",
     "favorite": true
   },
   {
@@ -180,20 +180,20 @@
     "title": "Our First Selfie",
     "date": "2023-11-18",
     "file": "/RashVijay/download (24).jpg",
-    "caption": "Our first selfie together… unforgettable",
+    "caption": "That first hug… a feeling I’ll never forget.",
     "favorite": true
   },
   {
     "id": "photo24",
-    "title": "Fit Check Moment",
+    "title": "Perfect You",
     "date": "2023-11-18",
     "file": "/RashVijay/download (25).jpg",
-    "caption": "You looked adorable here",
+    "caption": "A simple moment with you… turned into something unforgettable.",
     "favorite": true
   },
   {
     "id": "photo25",
-    "title": "First Hug",
+    "title": "That First Hug",
     "date": "2023-11-18",
     "file": "/RashVijay/download (26).jpg",
     "caption": "That first warm hug… still the best feeling",
@@ -201,7 +201,7 @@
   },
   {
     "id": "photo27",
-    "title": "Ranibaug Selfie Video",
+    "title": "Simple & Special",
     "date": "2023-11-18",
     "file": "/RashVijay/download (27).mp4",
     "caption": "A simple moment that became special",
