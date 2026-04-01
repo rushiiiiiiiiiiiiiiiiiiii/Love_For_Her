@@ -48,21 +48,23 @@ const navigate = useNavigate()
 
   /* ===== Play Note ===== */
   const playNote = (note: any) => {
-    pauseMusic();
-    if (audioRef.current) audioRef.current.pause();
+  pauseMusic();
 
-    const audio = new Audio(note.file);
-    audioRef.current = audio;
+  // ❌ REMOVE THIS
+  // const audio = new Audio(note.file);
+  // audioRef.current = audio;
+  // audio.play();
 
-    audio.play();
-    setPlayingId(note.id);
+  // ✅ JUST FAKE PLAY UI
+  setPlayingId(note.id);
 
-    audio.onended = () => {
-      setPlayingId(null);
-      setProgress(0);
-      resumeMusic();
-    };
-  };
+  // Optional: auto stop after few seconds
+  setTimeout(() => {
+    setPlayingId(null);
+    setProgress(0);
+    resumeMusic();
+  }, 2000);
+};
 
   /* ===== Pause ===== */
   const pauseNote = () => {
