@@ -174,7 +174,7 @@ export default function Shayaris() {
           </p>
 
           <p className="text-center text-muted-foreground italic mb-6">
-            — Your Vijay ❤️
+            — Your Rushi ❤️
           </p>
 
           {/* Translation */}

@@ -135,7 +135,6 @@ export default function Timeline() {
             {/* IMAGE */}
             <div className="relative w-full max-h-[600px] rounded-lg overflow-hidden border-4 border-white shadow-lg bg-black/10 flex justify-center items-center">
               <img
-                loading="lazy"
                 src={currentMoment.image}
                 loading="lazy"
                 alt={currentMoment.title}

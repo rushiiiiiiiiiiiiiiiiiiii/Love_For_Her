@@ -15,15 +15,15 @@
         const profile = JSON.parse(localStorage.getItem("userProfile") || "{}");
         const name = profile?.name || "My Love";
 
-        document.title = `For ${name} — From Vijay`;
+        document.title = `For ${name} — From Rushi`;
 
         const ogTitle = document.querySelector('meta[property="og:title"]');
         if (ogTitle)
-          ogTitle.setAttribute("content", `For ${name} — From Vijay`);
+          ogTitle.setAttribute("content", `For ${name} — From Rushi`);
       } catch (e) {}
     </script>
     <meta name="description" content="A romantic gift made with love" />
-    <meta name="author" content="Vijay" />
+    <meta name="author" content="Rushi" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,12 +33,12 @@
       rel="stylesheet"
     />
 
-    <meta property="og:title" content="For Rashmika — From Vijay" />
+    <meta property="og:title" content="For Pooja — From Rushi" />
     <meta property="og:description" content="A romantic gift made with love" />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="For Vijay — From Vijay" />
+    <meta name="twitter:title" content="For Rushi — From Rushi" />
   </head>
 
   <body>

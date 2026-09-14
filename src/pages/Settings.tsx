@@ -303,7 +303,7 @@ export default function Settings() {
         </div>
 
         <div className="text-center mt-10 text-sm text-muted-foreground fade-up">
-          <p>Made with ❤️ for {gname} By Vijay</p>
+          <p>Made with ❤️ for {gname} By Rushi</p>
         </div>
       </div>
       {ClearModal}

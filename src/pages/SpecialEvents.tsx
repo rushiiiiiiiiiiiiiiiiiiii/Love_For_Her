@@ -348,7 +348,7 @@ export default function SpecialEvents() {
             </p>
 
             <p className="text-2xl md:text-5xl font-bold text-pink-800 my-3 md:my-4 drop-shadow">
-              Vijay ❤️ {name}
+              Rushi ❤️ {name}
             </p>
 
             <p className="text-pink-900 text-xs md:text-base tracking-wide">
@@ -417,7 +417,7 @@ export default function SpecialEvents() {
               {/* Right signature */}
               <div className="text-center">
                 <p className="text-pink-800 font-handwriting text-base md:text-xl mb-1">
-                  Vijay
+                  Rushi
                 </p>
                 <div className="w-16 md:w-24 mx-auto border-t border-pink-400"></div>
                 <p className="text-[10px] md:text-xs text-pink-600 mt-1">
