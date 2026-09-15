@@ -243,24 +243,28 @@ export default function SpecialEvents() {
               </p>
             </div>
 
-            {/* 4. Fights */}
-            <div className="p-6 rounded-2xl glass">
-              <h3 className="text-2xl font-semibold mb-2">
-                🔥 We Fight But We Don’t Leave
-              </h3>
-              <p className="text-pink-900/80">
-                Arguments don’t break us — they build us. Because leaving was
-                never an option.
-              </p>
+            {/* 4. Happiness */}
+<div className="p-6 rounded-2xl glass">
+  <h3 className="text-2xl font-semibold mb-2">
+    ✨ We’re Happiest When We’re Together
+  </h3>
 
-              <div
-                className="story-meter"
-                style={{ "--fill": "100%" } as React.CSSProperties}
-              >
-                <div className="story-meter-fill"></div>
-              </div>
-              <p className="text-xs text-pink-700 mt-1">Bond Stability: 92%</p>
-            </div>
+  <p className="text-pink-900/80">
+    We’ve only just begun, but being together already brings a kind of
+    happiness that feels effortless, genuine, and completely ours.
+  </p>
+
+  <div
+    className="story-meter"
+    style={{ "--fill": "100%" } as React.CSSProperties}
+  >
+    <div className="story-meter-fill"></div>
+  </div>
+
+  <p className="text-xs text-pink-700 mt-1">
+    Happiness Level: 100%
+  </p>
+</div>
 
             {/* 5. Effort */}
             <div className="p-6 rounded-2xl glass">
@@ -428,7 +432,7 @@ export default function SpecialEvents() {
 
             {/* Issued Date */}
             <p className="text-[10px] md:text-xs text-pink-700 mt-6 md:mt-8 font-medium tracking-wide">
-              📅 Issued on: <span className="underline">January 2025</span>
+              📅 Issued on: <span className="underline">August 2026</span>
             </p>
 
             <p className="mt-4 md:mt-6 text-[8px] md:text-[10px] text-pink-500 uppercase tracking-widest">
